@@ -93,6 +93,14 @@ module Kimurai::BrowserBuilder
           logger.debug "BrowserBuilder (selenium_firefox): enabled custom user_agent"
         end
 
+        if path = @config[:download_path].presence
+          driver_options.profile["browser.download.dir"] = path
+          driver_options.profile["browser.download.folderList"] = 2
+          driver_options.profile["browser.download.manager.showWhenStarting"] = false
+          driver_options.profile["browser.helperApps.neverAsk.saveToDisk"] = 'application/csv;text/csv;application/vnd.ms-excel;application/msexcel;application/x-msexcel;application/x-ms-excel;application/x-excel;application/x-dos_ms_excel;application/xls;application/x-xls;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/vnd-xls'
+          logger.debug "BrowserBuilder (selenium_firefox): set download path"
+        end
+
         # Headless mode
         if ENV["HEADLESS"] != "false"
           if @config[:headless_mode] == :virtual_display
