@@ -104,11 +104,11 @@ module Kimurai::BrowserBuilder
         if ENV["HEADLESS"] != "false"
           if @config[:headless_mode] == :virtual_display
             if Gem::Platform.local.os == "linux"
-              # unless self.class.virtual_display
-              #   require 'headless'
-              #   self.class.virtual_display = Headless.new(reuse: true, destroy_at_exit: false)
-              #   self.class.virtual_display.start
-              # end
+              unless self.class.virtual_display
+                require 'headless'
+                self.class.virtual_display = Headless.new(reuse: true, destroy_at_exit: false)
+                self.class.virtual_display.start
+              end
 
               logger.debug "BrowserBuilder (selenium_firefox): enabled virtual_display headless_mode"
             else
@@ -116,13 +116,13 @@ module Kimurai::BrowserBuilder
                 "on Linux platform. Browser will run in normal mode. Set `native` mode instead."
             end
           else
-            # driver_options.args << "--headless"
+            driver_options.args << "--headless"
             logger.debug "BrowserBuilder (selenium_firefox): enabled native headless_mode"
           end
         end
 
         desired_capabilities = Selenium::WebDriver::Remote::Capabilities.firefox(capabilities)
-        Capybara::Selenium::Driver.new(app, browser: :firefox, options: driver_options, desired_capabilities: desired_capabilities)
+        Capybara::Selenium::Driver.new(app, browser: :firefox, options: driver_options)
       end
 
       # Create browser instance (Capybara session)
