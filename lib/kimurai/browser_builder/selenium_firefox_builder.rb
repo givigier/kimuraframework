@@ -135,51 +135,51 @@ module Kimurai::BrowserBuilder
 
       # Window size
       if size = @config[:window_size].presence
-        @browser.current_window.resize_to(*size)
+        #@browser.current_window.resize_to(*size)
         logger.debug "BrowserBuilder (selenium_firefox): enabled window_size"
       end
 
       # Cookies
       if cookies = @config[:cookies].presence
-        @browser.config.cookies = cookies
+        #@browser.config.cookies = cookies
         logger.debug "BrowserBuilder (selenium_firefox): enabled custom cookies"
       end
 
       # Browser instance options
       # skip_request_errors
       if skip_errors = @config[:skip_request_errors].presence
-        @browser.config.skip_request_errors = skip_errors
+      #  @browser.config.skip_request_errors = skip_errors
         logger.debug "BrowserBuilder (selenium_firefox): enabled skip_request_errors"
       end
 
       # retry_request_errors
       if retry_errors = @config[:retry_request_errors].presence
-        @browser.config.retry_request_errors = retry_errors
+        #@browser.config.retry_request_errors = retry_errors
         logger.debug "BrowserBuilder (selenium_firefox): enabled retry_request_errors"
       end
 
       # restart_if
       if requests_limit = @config.dig(:restart_if, :requests_limit).presence
-        @browser.config.restart_if[:requests_limit] = requests_limit
+        #@browser.config.restart_if[:requests_limit] = requests_limit
         logger.debug "BrowserBuilder (selenium_firefox): enabled restart_if.requests_limit >= #{requests_limit}"
       end
 
       if memory_limit = @config.dig(:restart_if, :memory_limit).presence
-        @browser.config.restart_if[:memory_limit] = memory_limit
+        #@browser.config.restart_if[:memory_limit] = memory_limit
         logger.debug "BrowserBuilder (selenium_firefox): enabled restart_if.memory_limit >= #{memory_limit}"
       end
 
       # before_request clear_cookies
       if @config.dig(:before_request, :clear_cookies)
-        @browser.config.before_request[:clear_cookies] = true
+        #@browser.config.before_request[:clear_cookies] = true
         logger.debug "BrowserBuilder (selenium_firefox): enabled before_request.clear_cookies"
       end
 
       # before_request clear_and_set_cookies
       if @config.dig(:before_request, :clear_and_set_cookies)
         if cookies = @config[:cookies].presence
-          @browser.config.cookies = cookies
-          @browser.config.before_request[:clear_and_set_cookies] = true
+          #@browser.config.cookies = cookies
+          #@browser.config.before_request[:clear_and_set_cookies] = true
           logger.debug "BrowserBuilder (selenium_firefox): enabled before_request.clear_and_set_cookies"
         else
           logger.error "BrowserBuilder (selenium_firefox): cookies should be present to enable before_request.clear_and_set_cookies, skipped"
@@ -198,13 +198,13 @@ module Kimurai::BrowserBuilder
 
       # before_request delay
       if delay = @config.dig(:before_request, :delay).presence
-        @browser.config.before_request[:delay] = delay
+        #@browser.config.before_request[:delay] = delay
         logger.debug "BrowserBuilder (selenium_firefox): enabled before_request.delay"
       end
 
       # encoding
       if encoding = @config[:encoding]
-        @browser.config.encoding = encoding
+        #@browser.config.encoding = encoding
         logger.debug "BrowserBuilder (selenium_firefox): enabled encoding: #{encoding}"
       end
 
