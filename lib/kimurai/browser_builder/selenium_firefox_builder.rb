@@ -116,8 +116,8 @@ module Kimurai::BrowserBuilder
                 "on Linux platform. Browser will run in normal mode. Set `native` mode instead."
             end
           else
-            driver_options.args << "--headless"
-            logger.debug "BrowserBuilder (selenium_firefox): enabled native headless_mode"
+            # driver_options.args << "--headless"
+            # logger.debug "BrowserBuilder (selenium_firefox): enabled native headless_mode"
           end
         end
 
