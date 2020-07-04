@@ -27,6 +27,8 @@ module Kimurai::BrowserBuilder
         driver_options.profile["browser.link.open_newwindow"] = 3 # open windows in tabs
         driver_options.profile["media.peerconnection.enabled"] = false # disable web rtc
         driver_options.profile["intl.accept_languages"] = "en-US,en"
+        driver_options.profile["dom.webdriver.enabled"] = false
+        driver_options.profile["useAutomationExtension"] = false
 
         # Create capabilities
         capabilities = {}
@@ -123,7 +125,7 @@ module Kimurai::BrowserBuilder
         end
 
         desired_capabilities = Selenium::WebDriver::Remote::Capabilities.firefox(capabilities)
-        Capybara::Selenium::Driver.new(app, browser: :remote, options: driver_options, desired_capabilities: desired_capabilities)
+        Capybara::Selenium::Driver.new(app, browser: :firefox, options: driver_options, desired_capabilities: desired_capabilities)
       end
 
       # Create browser instance (Capybara session)
