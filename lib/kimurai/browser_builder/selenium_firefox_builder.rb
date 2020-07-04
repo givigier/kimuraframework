@@ -96,7 +96,7 @@ module Kimurai::BrowserBuilder
         if path = @config[:download_path].presence
           driver_options.profile["browser.download.dir"] = path
           driver_options.profile["browser.download.folderList"] = 2
-          driver_options.profile["browser.helperApps.neverAsk.saveToDisk"] = 'text/plain,application/csv,text/csv,application/vnd.ms-excel,application/msexcel,application/x-msexcel,application/x-ms-excel,application/x-excel,application/x-dos_ms_excel,application/xls,application/x-xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd-xls'
+          driver_options.profile["browser.helperApps.neverAsk.saveToDisk"] = 'text/plain,application/csv,text/csv,application/vnd.ms-excel,application/msexcel,application/x-msexcel,application/x-ms-excel,application/x-excel,application/x-dos_ms_excel,application/xls,application/x-xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd-xls,application/x-msdownload'
           logger.debug "BrowserBuilder (selenium_firefox): set download path"
         end
 
