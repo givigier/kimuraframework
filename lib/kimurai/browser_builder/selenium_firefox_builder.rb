@@ -123,7 +123,7 @@ module Kimurai::BrowserBuilder
         end
 
         desired_capabilities = Selenium::WebDriver::Remote::Capabilities.firefox(capabilities)
-        Capybara::Selenium::Driver.new(app, browser: :firefox, options: driver_options, desired_capabilities: desired_capabilities)
+        Capybara::Selenium::Driver.new(app, browser: :remote, options: driver_options, desired_capabilities: desired_capabilities)
       end
 
       # Create browser instance (Capybara session)
